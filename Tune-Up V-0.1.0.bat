@@ -59,6 +59,7 @@ cls
 	cls
 	echo. Tools Installed
 	pause
+	:: **************************************
 	cls
 	
 	:: making HCS_Tools folder
@@ -76,3 +77,25 @@ cls
 	move "Call_HCS_4_Help_(360)-379-4865.exe" %HCS%
 	
 	goto :menu
+:: **************************************
+:update
+cls
+	
+	:: MalwareBytes
+	winget upgrade "Malwarebytes" -s winget
+	
+	:: CCleaner
+	winget upgrade "CCleaner" -s winget
+	
+	:: VLC
+	winget upgrade "VLC media player" -s winget
+	
+	:: Firefox
+	winget upgrade "Mozilla Firefox" -s winget
+	
+	:: AeroAdmin
+	powershell -command "wget https://ulm.aeroadmin.com/AeroAdmin.exe -O 'Call_HCS_4_Help_(360)-379-4865.exe'"
+	move "Call_HCS_4_Help_(360)-379-4865.exe" %HCS%
+	
+	goto :menu
+:: **************************************
