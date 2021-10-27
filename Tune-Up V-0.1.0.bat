@@ -1,5 +1,5 @@
 @echo off
-color 0a
+color 17
 title HCS Tune-Up Script V0.1.0
 goto :menu
 
@@ -41,3 +41,33 @@ cls
 	goto :menu
 	
 :: **************************************
+: install
+cls
+	
+	:: MalwareBytes
+	winget install "Malwarebytes" -s winget
+	
+	:: CCleaner
+	winget install "CCleaner" -s winget
+	
+	:: VLC
+	winget install "VLC media player" -s winget
+	
+	:: Firefox
+	winget install "Mozilla Firefox" -s winget
+	
+	cls
+	echo. Tools Installed
+	pause
+	
+	mkdir %userprofile%/Desktop/HCS_Tools
+	set HCS=%userprofile%/Desktop/HCS_Tools
+	
+	del "Call_HCS_4_Help_(360)-379-4865.exe"
+	wget https://ulm.aeroadmin.com/AeroAdmin.exe -O Call_HCS_4_Help_(360)-379-4865.exe
+	
+	move "C:\Users\Public\Desktop\CCleaner.lnk" %HCS%
+	del "C:\Users\Public\Desktop\VLC media player.lnk"
+	move "C:\Users\Public\Desktop\Firefox.lnk" "%userprofile%/desktop"
+	move "C:\Users\Public\Desktop\Malwarebytes.lnk" %HCS%
+	move "Call_HCS_4_Help_(360)-379-4865.exe" %HCS%
