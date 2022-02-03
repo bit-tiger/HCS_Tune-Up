@@ -1,5 +1,4 @@
 @echo off
-color 17
 title HCS Tune-Up Script V0.3.0
 goto :menu
 
@@ -15,12 +14,13 @@ cls
 	echo. h - help         x - exit         i - info
 	echo. ******************************************
 	echo. 1. Install tools and make HCS-Tools Folder
-	echo. 2. Update tools  
+	echo. 2. Install Open-Office
+	echo. 3. Install Adobe-Acrobat-Reader
 	
 	:: **************************************
 	:: menu logic
 	
-	choice /c hi12x /n
+	choice /c hi123x /n
 	cls
 	IF %errorlevel%==1 (
 		goto :help
@@ -29,10 +29,12 @@ cls
 	) ELSE IF %errorlevel%==3 (
 		goto :install
 	) ELSE IF %errorlevel%==4 (
-		goto :update
+		goto :oo
 	) ELSE IF %errorlevel%==5 (
+		goto :aar
+	) ELSE IF %errorlevel%==6 (
 		goto eof
-	) ELSE echo. please pick an option
+	)ELSE echo. please pick an option
 	pause
 	goto :menu
 	
@@ -71,24 +73,27 @@ cls
 	
 	goto :menu
 :: **************************************
-:update
+:oo
 cls
 	
-	:: MalwareBytes
-	winget upgrade "Malwarebytes" -s winget
+	:: Open Office
+	winget install "OpenOffice" -s winget
 	
-	:: CCleaner
-	winget upgrade "CCleaner" -s winget
+	cls
+	echo. Open Office installed
+	pause
 	
-	:: VLC
-	winget upgrade "VLC media player" -s winget
+	goto :menu
+:: **************************************
+:aar
+cls
+
+	:: Adobe Acrobat Reader
+	winget install "Adobe Acrobat Reader DC" -s winget
 	
-	:: Firefox
-	winget upgrade "Mozilla Firefox" -s winget
-	
-	:: AeroAdmin
-	powershell -command "wget https://ulm.aeroadmin.com/AeroAdmin.exe -O 'Call_HCS_4_Help_(360)-379-4865.exe'"
-	move "Call_HCS_4_Help_(360)-379-4865.exe" %HCS%
+	cls
+	echo. Adobe Acrobat Reader installed
+	pause
 	
 	goto :menu
 :: **************************************
@@ -97,10 +102,16 @@ cls
 	echo. HCS Tune-Up Script V-0.3.0
 	echo. Made by bit-tiger for HADLOCK COMPUTER SERVICES
 	
+	pause
+	goto :menu
 :: **************************************
 :help
 cls
 	echo. Option 1 will install; Malwarebytes, CCleaner, VLC, Firefox, and aero admin.
 	echo. It wll then create the HCS_Tools folder, and place links to the apps in said folder.
 	echo.
-	echo. Option 2 will update all of those same apps.
+	echo. Option 2 will install Open Office
+	echo. Option 3 will install Adobe Acrobat Reader
+	
+	pause
+	goto :menu
