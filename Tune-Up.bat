@@ -24,6 +24,7 @@ cls
 	echo. 1. Install tools and make HCS-Tools Folder
 	echo. 2. Install Open-Office
 	echo. 3. Install Adobe-Acrobat-Reader
+	echo. 4. Install Libre-Office
 	
 	:: **************************************
 	:: menu logic
