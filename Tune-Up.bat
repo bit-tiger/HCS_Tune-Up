@@ -1,14 +1,22 @@
 @echo off
-title HCS Tune-Up Script V0.3.0
-goto :menu
+title HCS Tune-Up Script V1.0.0
 
+NET SESSION >nul 2>&1
+IF %errorlevel% EQU 0 (
+	goto :menu
+) ELSE (
+	color 4f
+	
+	echo. ERROR: Run as administrator.
+	pause
+	goto :eof
 
 :: **************************************
 :: the menu interface 
 : menu
 cls
 	
-	echo.         HCS Tune-Up Script V-0.3.0
+	echo.         HCS Tune-Up Script V-1.0.0
 	echo.           (Script by bit-tiger)   
 	echo.                                   
 	echo. h - help         x - exit         i - info
@@ -20,21 +28,23 @@ cls
 	:: **************************************
 	:: menu logic
 	
-	choice /c hi123x /n
+	choice /c hix123 /n
 	cls
 	IF %errorlevel%==1 (
 		goto :help
 	) ELSE IF %errorlevel%==2 (
 		goto :info
 	) ELSE IF %errorlevel%==3 (
-		goto :install
-	) ELSE IF %errorlevel%==4 (
-		goto :oo
-	) ELSE IF %errorlevel%==5 (
-		goto :aar
-	) ELSE IF %errorlevel%==6 (
 		goto eof
-	)ELSE echo. please pick an option
+	) ELSE IF %errorlevel%==4 (
+		goto :install
+	) ELSE IF %errorlevel%==5 (
+		goto :oo
+	) ELSE IF %errorlevel%==6 (
+		goto :lo
+	) ELSE IF %errorlevel%==7 (
+		goto :aar
+	) ELSE echo. please pick an option
 	pause
 	goto :menu
 	
@@ -56,7 +66,7 @@ cls
 	
 	cls
 	echo. Tools Installed
-	pause
+	timeout /T 5
 	:: **************************************
 	cls
 	
@@ -71,6 +81,7 @@ cls
 	move "C:\Users\Public\Desktop\Malwarebytes.lnk" %HCS%
 	move "Call_HCS_4_Help_(360)-379-4865.exe" %HCS%
 	
+	pause
 	goto :menu
 :: **************************************
 :oo
@@ -97,9 +108,22 @@ cls
 	
 	goto :menu
 :: **************************************
+:lo
+cls
+
+	::Libre Office
+	winget install "LibreOffice" -s winget
+
+	cls
+	echo. Libre Office installed
+	pause
+
+	goto :menu
+
+:: **************************************
 :info
 cls
-	echo. HCS Tune-Up Script V-0.3.0
+	echo. HCS Tune-Up Script V-1.0.0
 	echo. Made by bit-tiger for HADLOCK COMPUTER SERVICES
 	
 	pause
@@ -112,6 +136,7 @@ cls
 	echo.
 	echo. Option 2 will install Open Office
 	echo. Option 3 will install Adobe Acrobat Reader
+	echo. Option 4 will install Libre Office 
 	
 	pause
 	goto :menu
