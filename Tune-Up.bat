@@ -1,37 +1,51 @@
 @echo off
-color 17
-title HCS Tune-Up Script V0.3.0
-goto :menu
+title HCS Tune-Up Script V1.0.0
 
+NET SESSION >nul 2>&1
+IF %errorlevel% EQU 0 (
+	goto :menu
+) ELSE (
+	color 4f
+	
+	echo. ERROR: Run as administrator.
+	pause
+	goto :eof
 
 :: **************************************
 :: the menu interface 
 : menu
 cls
 	
-	echo.         HCS Tune-Up Script V-0.3.0
+	echo.         HCS Tune-Up Script V-1.0.0
 	echo.           (Script by bit-tiger)   
 	echo.                                   
 	echo. h - help         x - exit         i - info
 	echo. ******************************************
 	echo. 1. Install tools and make HCS-Tools Folder
-	echo. 2. Update tools  
+	echo. 2. Install Open-Office
+	echo. 3. Install Libre-Office
+	echo. 4. Install Adobe-Acrobat-Reader
+	
 	
 	:: **************************************
 	:: menu logic
 	
-	choice /c hi12x /n
+	choice /c hix1234 /n
 	cls
 	IF %errorlevel%==1 (
 		goto :help
 	) ELSE IF %errorlevel%==2 (
 		goto :info
 	) ELSE IF %errorlevel%==3 (
-		goto :install
-	) ELSE IF %errorlevel%==4 (
-		goto :update
-	) ELSE IF %errorlevel%==5 (
 		goto eof
+	) ELSE IF %errorlevel%==4 (
+		goto :install
+	) ELSE IF %errorlevel%==5 (
+		goto :oo
+	) ELSE IF %errorlevel%==6 (
+		goto :lo
+	) ELSE IF %errorlevel%==7 (
+		goto :aar
 	) ELSE echo. please pick an option
 	pause
 	goto :menu
@@ -54,7 +68,7 @@ cls
 	
 	cls
 	echo. Tools Installed
-	pause
+	timeout /T 5
 	:: **************************************
 	cls
 	
@@ -69,38 +83,62 @@ cls
 	move "C:\Users\Public\Desktop\Malwarebytes.lnk" %HCS%
 	move "Call_HCS_4_Help_(360)-379-4865.exe" %HCS%
 	
+	pause
 	goto :menu
 :: **************************************
-:update
+:oo
 cls
 	
-	:: MalwareBytes
-	winget upgrade "Malwarebytes" -s winget
+	:: Open Office
+	winget install "OpenOffice" -s winget
 	
-	:: CCleaner
-	winget upgrade "CCleaner" -s winget
-	
-	:: VLC
-	winget upgrade "VLC media player" -s winget
-	
-	:: Firefox
-	winget upgrade "Mozilla Firefox" -s winget
-	
-	:: AeroAdmin
-	powershell -command "wget https://ulm.aeroadmin.com/AeroAdmin.exe -O 'Call_HCS_4_Help_(360)-379-4865.exe'"
-	move "Call_HCS_4_Help_(360)-379-4865.exe" %HCS%
+	cls
+	echo. Open Office installed
+	pause
 	
 	goto :menu
+:: **************************************
+:aar
+cls
+
+	:: Adobe Acrobat Reader
+	winget install "Adobe Acrobat Reader DC" -s winget
+	
+	cls
+	echo. Adobe Acrobat Reader installed
+	pause
+	
+	goto :menu
+:: **************************************
+:lo
+cls
+
+	::Libre Office
+	winget install "LibreOffice" -s winget
+
+	cls
+	echo. Libre Office installed
+	pause
+
+	goto :menu
+
 :: **************************************
 :info
 cls
-	echo. HCS Tune-Up Script V-0.3.0
+	echo. HCS Tune-Up Script V-1.0.0
 	echo. Made by bit-tiger for HADLOCK COMPUTER SERVICES
 	
+	pause
+	goto :menu
 :: **************************************
 :help
 cls
 	echo. Option 1 will install; Malwarebytes, CCleaner, VLC, Firefox, and aero admin.
 	echo. It wll then create the HCS_Tools folder, and place links to the apps in said folder.
 	echo.
-	echo. Option 2 will update all of those same apps.
+	echo. Option 2 will install Open Office
+	echo. Option 3 will install Adobe Acrobat Reader
+	echo. Option 4 will install Libre Office 
+	
+	pause
+	goto :menu
