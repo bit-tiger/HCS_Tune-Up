@@ -23,13 +23,14 @@ cls
 	echo. ******************************************
 	echo. 1. Install tools and make HCS-Tools Folder
 	echo. 2. Install Open-Office
-	echo. 3. Install Adobe-Acrobat-Reader
-	echo. 4. Install Libre-Office
+	echo. 3. Install Libre-Office
+	echo. 4. Install Adobe-Acrobat-Reader
+	
 	
 	:: **************************************
 	:: menu logic
 	
-	choice /c hix123 /n
+	choice /c hix1234 /n
 	cls
 	IF %errorlevel%==1 (
 		goto :help
