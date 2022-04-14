@@ -136,6 +136,7 @@ cls
 	echo. Option 1 will install; Malwarebytes, CCleaner, VLC, Firefox, and aero admin.
 	echo. It wll then create the HCS_Tools folder, and place links to the apps in said folder.
 	echo.
+
 	echo. Option 2 will install Open Office
 	echo. Option 3 will install Adobe Acrobat Reader
 	echo. Option 4 will install Libre Office 
