@@ -55,16 +55,16 @@ cls
 cls
 	
 	:: MalwareBytes
-	winget install "Malwarebytes" -s winget
+	winget install -e --id Malwarebytes.Malwarebytes
 	
 	:: CCleaner
-	winget install "CCleaner" -s winget
+	winget install -e --id Piriform.CCleaner
 	
 	:: VLC
-	winget install "VLC media player" -s winget
+	winget install -e --id VideoLAN.VLC
 	
 	:: Firefox
-	winget install "Mozilla Firefox" -s winget
+	winget install -e --id Mozilla.Firefox
 	
 	cls
 	echo. Tools Installed
